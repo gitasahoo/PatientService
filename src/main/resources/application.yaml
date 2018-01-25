@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: Patientservice
+  profiles.active: dev
+  # Discovery Server Access
+
+   
+  cloud:
+    consul:
+      discovery:
+        healthCheckPath: /ps/health
+        healthCheckInterval: 15s
+      ribbon:
+        enabled: true   
+ 
+endpoints:
+     health:
+        sensitive: false
+           
+management:
+  security:
+    enabled: false
+  health:
+    consul:
+      enabled: false 
+    db:
+      enabled: false
+    diskspace:
+      enabled: false
+    defaults:
+       enabled: false
+        
+       
+server:
+   contextPath: /ps
+   port: 8082
+   
+services: 
+   volunteer:
+      url: http://VolunteerService/vs
